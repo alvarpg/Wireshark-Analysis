@@ -47,14 +47,13 @@ Durante el laboratorio se utilizaron las siguientes herramientas:
 ## Análisis DNS
 
 Primero desde la terminal del PC hacemos el comando: ipconfig /flushdns, para limpiar el cache DNS del ordenador. Después para la prueba hacer un ping a una pagina web, www.wikipedia.com
-Después en Wireshark usamos el filtro dns
+Después en Wireshark usamos el filtro "dns"
+
+<img width="1502" height="510" alt="Captura de pantalla 2026-06-15 185836" src="https://github.com/user-attachments/assets/9eee551d-ce68-4f57-9d37-b73f9db64c58" />
+
 
 Vemos que Wireshark ha captado dos paquetes, la pregunta y la respuesta del ping. 
 En el primer paquete estamos preguntando que IP corresponde a nombre de www.wikipedia.com. Y en el segundo paquete nos está respondiendo la IP 192.168.1.1, mi servidor DNS, con la IP de la pagina web: 185.15.58.226
-
-
-
-
 
 
 ## Análisis HTTP
