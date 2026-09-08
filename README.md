@@ -47,7 +47,7 @@ Durante el laboratorio se utilizaron las siguientes herramientas:
 ## Análisis DNS
 
 Primero desde la terminal del PC hacemos el comando: ipconfig /flushdns, para limpiar el cache DNS del ordenador. Después para la prueba hacer un ping a una pagina web, www.wikipedia.com
-Después en Wireshark usamos el filtro "dns"
+Después en Wireshark usamos el filtro: **dns**
 
 <img width="1502" height="510" alt="Captura de pantalla 2026-06-15 185836" src="https://github.com/user-attachments/assets/9eee551d-ce68-4f57-9d37-b73f9db64c58" />
 
@@ -60,10 +60,13 @@ En el primer paquete estamos preguntando que IP corresponde a nombre de www.wiki
 HTTP es un protocolo de comunicación utilizado para la transferencia de páginas web el cual no cifra la información transmitida.
 Para la prueba he usado la página web http://testasp.vulnweb.com/Search.asp?tfSearch=que%20tal
 
+<img width="1901" height="575" alt="Captura de pantalla 2026-06-15 211443" src="https://github.com/user-attachments/assets/51cb7ad4-a328-4217-9644-6d02e1f3d705" />
+
+
 Una página con numerosas vulnerabilidades, utilizada para hacer este tipo de pruebas.
 En ella he creado mi usuario con las credenciales
-alvaro
-contraseña1234
+**alvaro
+contraseña1234**
 
 Tras iniciar Wireshark, se accede a la página web utilizando las credenciales correspondientes.
 
@@ -73,13 +76,18 @@ Aplicando el filtro HTTP en Wireshark es posible visualizar todos los paquetes e
 
 Dentro del flujo HTTP se puede observar una gran cantidad de información relacionada con la sesión, incluyendo las credenciales del usuario transmitidas durante el proceso de autenticación.
 
+<img width="1585" height="646" alt="Captura de pantalla 2026-06-15 211243" src="https://github.com/user-attachments/assets/1e43e2f2-e4f5-4832-9a97-0118313de2f0" />
+<img width="752" height="597" alt="Captura de pantalla 2026-06-15 211207" src="https://github.com/user-attachments/assets/bb6c1cd8-97e1-409c-9201-2916f267635d" />
 
 
 
 
 ## Análisis HTTPS
 HTTPS utiliza TLS para cifrar las comunicaciones. Aunque el tráfico puede capturarse, su contenido permanece protegido.
-El filtro para ver los paquetes https en Wireshark es 	tcp.port == 443
+El filtro para ver los paquetes https en Wireshark es: 	**tcp.port == 443**
+
+<img width="1252" height="617" alt="Captura de pantalla 2026-06-16 120541" src="https://github.com/user-attachments/assets/ceec2a2d-ab4d-44e5-b796-bfb9de317df9" />
+
 
 Aunque es posible visualizar direcciones IP de origen y destino, no es posible visualizar contenido sensible, como usuarios o contraseñas.
 
@@ -87,7 +95,10 @@ Aunque es posible visualizar direcciones IP de origen y destino, no es posible v
 ARP se utiliza para asociar direcciones IP con direcciones MAC dentro de una red local.
 Cuando un equipo necesita comunicarse con otro dispositivo de la misma red, primero debe conocer su dirección MAC.
 Primero limpiamos el caché arp desde la cmd con el siguiente comando: 	arp -d
-Se utilizó el filtro:	arp
+Se utilizó el filtro:**arp**
+
+<img width="1095" height="272" alt="Captura de pantalla 2026-06-16 134720" src="https://github.com/user-attachments/assets/d75a618c-ca25-4479-99c8-5efb119d1e09" />
+
 
 
 Se observó tráfico ARP del tipo:	Who has 192.168.1.129 Tell 192.168.1.132
@@ -97,7 +108,10 @@ Esto demuestra cómo los equipos descubren la dirección física del dispositivo
 ## ICMP (Ping)
 ICMP (Internet Control Message Protocol) se utiliza para comprobar la conectividad entre dispositivos.
 Se hico el siguiente ping:	ping 192.168.1.129
-Filtro utilizado:		icmp
+Filtro utilizado:		**icmp**
+
+<img width="1333" height="301" alt="Captura de pantalla 2026-06-16 140113" src="https://github.com/user-attachments/assets/e81038f1-9816-456c-8bb0-b47c261e4dc8" />
+
 
 Se puede ver el primer paquete, el ping que lanza mi PC. Y los demás los reply del ordenador confirmando que existe conexión entre ambos equipos
 
@@ -110,7 +124,10 @@ Servidor → Cliente
 SYN ACK
 Cliente → Servidor
 ACK
-Filtro utilizado:		tcp.flags.syn == 1
+Filtro utilizado:		**tcp.flags.syn == 1**
+
+<img width="1187" height="331" alt="Captura de pantalla 2026-06-16 191402" src="https://github.com/user-attachments/assets/33e761ec-df1d-462a-8a42-328d95b0bf0a" />
+
 
 Para la prueba abrí un video de Youtube, por lo que se captura el principio de la conexión con el servidor de Youtube. Se identificó claramente la secuencia, que indica el establecimiento correcto de una conexión TCP:	SYN -> SYN, ACK -> ACK
 
